@@ -24,5 +24,16 @@ class Database {
             },
             models: [Tutorial]
         });
+
+        await this.sequelize
+            .authenticate()
+            .then(() => {
+                console.log("Connection has been established successfully.");
+            })
+            .catch((err) => {
+                console.error("Unable to connect to the Database:", err);
+            });
     }
 }
+
+export default Database;

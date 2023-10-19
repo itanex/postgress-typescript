@@ -11,6 +11,10 @@ interface ITutorialRepository {
 }
 
 class TutorialRepository implements ITutorialRepository {
+
+    constructor() {
+    }
+
     async save(tutorial: Tutorial): Promise<Tutorial> {
         try {
             return await Tutorial.create({
@@ -38,6 +42,7 @@ class TutorialRepository implements ITutorialRepository {
 
             return await Tutorial.findAll({ where: condition });
         } catch (error) {
+            console.error(error);
             throw new Error("Failed to retrieve Tutorials!");
         }
     }
